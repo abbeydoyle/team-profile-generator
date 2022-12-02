@@ -3,6 +3,9 @@
 - remove dist from gitignore
 - employee parent
 - eng, int, man children
+- input for color schemes?
+https://tailwind-elements.com/docs/standard/components/cards/
+
 
 ////////////////////////////////////////////////////////////////////////////////
 challenge getting started info

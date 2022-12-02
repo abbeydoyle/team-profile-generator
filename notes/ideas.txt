@@ -1,0 +1,5 @@
+- tailwind css
+- cards
+- remove dist from gitignore
+- employee parent
+- eng, int, man children

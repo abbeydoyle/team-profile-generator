@@ -5,7 +5,7 @@
 - eng, int, man children
 - input for color schemes?
 https://tailwind-elements.com/docs/standard/components/cards/
-
+https://uibakery.io/regex-library/email
 
 ////////////////////////////////////////////////////////////////////////////////
 challenge getting started info

@@ -2,7 +2,7 @@
 const fs = require("fs");
 // const dist = require("dist");
 const inquirer = require("inquirer");
-const generateHTML = require("./dist/generateHTML");
+const generateHTML = require("./src/generateHTML");
 const Employee = require("./lib/Employee")
 const Engineer = require("./lib/Engineer")
 const Intern = require("./lib/Intern")
@@ -78,16 +78,10 @@ const intialQuestions = () => {
 const addEmployee = () => {
       inquirer.prompt ([
             {
-                  type: 'confirm',
-                  name: 'confirmAdd',
-                  message: 'Would you like to add an employee at this time?',
-            },
-
-            {
                   type: 'list',
-                  name: 'addMember',
-                  message: "What is this employee's role?",
-                  choices: ['Manager', 'Engineer', 'Intern']
+                  name: 'role',
+                  message: "Which type of employee would you like to add?",
+                  choices: ['Manager', 'Engineer', 'Intern', 'None at this time']
             }
       ])
       .then(function(userInput) {
@@ -98,10 +92,11 @@ const addEmployee = () => {
                   break;
                   case "Intern": addIntern();
                   break;
-                  default: writeToFile();
+                  default: writeHTML();
                   break;
             }
       })
+      console.log(teamArray)
 }
 
 const addEngineer = () => {
@@ -315,41 +310,38 @@ const addManager = () => {
 }
 
 
-
+function writeHTML() {
+      fs.writeFile('index.html', generateHTML,  (err) => {
+            err ? console.error(err) : console.log('File successfully written in a file entitled index.html');
+            })
+}
 
 
 // FIXME: last hw temporarily
 // potential write file function
-const writeToFile = data => {
-      // return new Promise((resolve, reject) => {
-      fs.writeFile('index.html', data, (err) => {
-            err ? console.error(err) : console.log('File successfully written in a file entitled index.html');
-            })
-      // })
-}
-
-addEmployee()
-
-//function to initialize app
-// const init = () => {
-//       return inquirer.prompt(questions);
+// const writeToFile = data => {
+//       // return new Promise((resolve, reject) => {
+//       fs.writeFile('index.html', data, (err) => {
+//             err ? console.error(err) : console.log('File successfully written in a file entitled index.html');
+//             })
+//       // })
 // }
 
-// // Function call to initialize app
-// init()
-// .then(userInput => {
-//       return generateMarkdown(userInput);
-//   })
-//   .then(readmeInfo => {
-//       return writeToFile(readmeInfo);
-//   })
-//   .catch(err => {
-//       console.log(err);
-//   })
+addEmployee()
+// .then(teamArray => {
+//       return generateHTML(teamArray);
+//     })
+//     .then(pageHTML => {
+//       return writeToFile(pageHTML);
+//     })
+//     .catch(err => {
+//    console.log(err);
+// })
 
 //   Exit the inquirer prompt
 // FIXME: works but gives error
 function exit() {
+      console.log(teamArray)
       console.log('Thank you for visiting. Please come again!')
       addEmployee.ui.close();
       addEngineer.ui.close();

@@ -10,6 +10,7 @@ const Manager = require("./lib/Manager");
 const generatePortfolio = require("./src/generateHTML");
 const generateHTML = require("./src/generateHTML");
 const stringHTML = require("./src/generateHTML");
+const generateCards = require("./src/generateHTML")
 
 /*
 TODO: inquirer cats
@@ -327,10 +328,11 @@ const addManager = () => {
 
 
 function writeHTML() {
-      console.log(generateHTML);
-      console.log(generatePortfolio);
-      console.log(stringHTML);
-      fs.writeFile('index.html', stringHTML, (err) => {
+      console.log(module.generateHTML);
+      console.log(module.generatePortfolio);
+      console.log(module.stringHTML);
+      console.log(generateCards(teamArray));
+      fs.writeFile('index.html', generateCards(teamArray), (err) => {
             err ? console.log(err) : console.log('File written successfuly in index.html')
        })
 }

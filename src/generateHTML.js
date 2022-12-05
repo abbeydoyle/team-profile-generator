@@ -1,91 +1,88 @@
-const fs = require('fs');
-
-// FIXME: initial question answers
-// generate engineer html card using class functions and inquirer prompt
-const generateEngineer = function(engineer) {
-      return `<div class="block rounded-lg shadow-lg bg-white max-w-sm text-center w-full sm:w-1/2 md:w-1/2 xl:w-1/4 mx-5 my-5">
-      <div class="py-3 px-6 border-b border-gray-300 text-${data.textColor}">
-      ${enginer.getRole()}
-      </div>
-      <div class="p-6">
-        <h5 class="text-${data.textColor} text-xl font-medium mb-2">${engineer.getName()}</h5>
-        <p class="text-${data.textColor} text-base mb-4">
-          ${engineer.getID()}
-        </p>
-        <p class="text-${data.textColor} text-base mb-4">
-          ${engineer.getEmail()}
-        </p>
-        <p class="text-${data.textColor} text-base mb-4">
-          ${engineer.getGithub()}
-        </p>
-        <!-- <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button> -->
-      </div>
-      <div class="py-3 px-6 border-t border-gray-300 text-${data.textColor}">
-          ${engineer.getRole()}
-      </div>
-      </div>`
-}
-
-// generate intern html card using class functions and inquirer prompt
-const generateIntern = function(intern) {
-      return `<div class="block rounded-lg shadow-lg bg-white max-w-sm text-center w-full sm:w-1/2 md:w-1/2 xl:w-1/4 mx-5 my-5">
-      <div class="py-3 px-6 border-b border-gray-300 text-${data.textColor}">
-      ${intern.getRole()}
-      </div>
-      <div class="p-6">
-        <h5 class="text-${data.textColor} text-xl font-medium mb-2">${engineer.getName()}</h5>
-        <p class="text-${data.textColor} text-base mb-4">
-          ${intern.getID()}
-        </p>
-        <p class="text-${data.textColor} text-base mb-4">
-          ${intern.getEmail()}
-        </p>
-        <p class="text-${data.textColor} text-base mb-4">
-          ${intern.getSchool()}
-        </p>
-        <!-- <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button> -->
-      </div>
-      <div class="py-3 px-6 border-t border-gray-300 text-${data.textColor}">
-          ${intern.getRole()}
-      </div>
-      </div>
-      `
-}
-
-// generate manager html card using class functions and inquirer prompt
-const generateManager = function(manager) {
-      return `<div class="block rounded-lg shadow-lg bg-white max-w-sm text-center w-full sm:w-1/2 md:w-1/2 xl:w-1/4 mx-5 my-5">
-      <div class="py-3 px-6 border-b border-gray-300 text-${data.textColor}">
-      ${manager.getRole()}
-      </div>
-      <div class="p-6">
-        <h5 class="text-${data.textColor} text-xl font-medium mb-2">${manager.getName()}</h5>
-        <p class="text-${data.textColor} text-base mb-4">
-          ${manager.getID()}
-        </p>
-        <p class="text-${data.textColor} text-base mb-4">
-          ${manager.getEmail()}
-        </p>
-        <p class="text-${data.textColor} text-base mb-4">
-          ${manager.getOfficeNumber()}
-        </p>
-        <!-- <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button> -->
-      </div>
-      <div class="py-3 px-6 border-t border-gray-300 text-${data.textColor}">
-          ${manager.getRole()}
-      </div>
-      </div>
-      `
-}
-
-// create card string
-function generateHTML(data) {
+const generateCards = team => {
       // empty array to pass cards into
       var cardArray = []
 
+      // generate engineer html card using class functions and inquirer prompt
+      const generateEngineer = engineer => {
+            return `<div class="block rounded-lg shadow-lg bg-white max-w-sm text-center w-full sm:w-1/2 md:w-1/2 xl:w-1/4 mx-5 my-5">
+            <div class="py-3 px-6 border-b border-gray-300 text-black">
+            ${engineer.getRole()}
+            </div>
+            <div class="p-6">
+              <h5 class="text-black text-xl font-medium mb-2">${engineer.getName()}</h5>
+              <p class="text-black text-base mb-4">
+                ${engineer.getID()}
+              </p>
+              <p class="text-black text-base mb-4">
+                ${engineer.getEmail()}
+              </p>
+              <p class="text-black text-base mb-4">
+                ${engineer.getGithub()}
+              </p>
+              <!-- <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button> -->
+            </div>
+            <div class="py-3 px-6 border-t border-gray-300 text-black">
+                ${engineer.getRole()}
+            </div>
+            </div>`
+      }
+
+      // generate intern html card using class functions and inquirer prompt
+      const generateIntern = intern => {
+            return `<div class="block rounded-lg shadow-lg bg-white max-w-sm text-center w-full sm:w-1/2 md:w-1/2 xl:w-1/4 mx-5 my-5">
+            <div class="py-3 px-6 border-b border-gray-300 text-black">
+            ${intern.getRole()}
+            </div>
+            <div class="p-6">
+              <h5 class="text-black text-xl font-medium mb-2">${intern.getName()}</h5>
+              <p class="text-black text-base mb-4">
+                ${intern.getID()}
+              </p>
+              <p class="text-black text-base mb-4">
+                ${intern.getEmail()}
+              </p>
+              <p class="text-black text-base mb-4">
+                ${intern.getSchool()}
+              </p>
+              <!-- <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button> -->
+            </div>
+            <div class="py-3 px-6 border-t border-gray-300 text-black">
+                ${intern.getRole()}
+            </div>
+            </div>
+            `
+      }
+
+      // generate manager html card using class functions and inquirer prompt
+      const generateManager = manager => {
+            return `<div class="block rounded-lg shadow-lg bg-white max-w-sm text-center w-full sm:w-1/2 md:w-1/2 xl:w-1/4 mx-5 my-5">
+            <div class="py-3 px-6 border-b border-gray-300 text-black">
+            ${manager.getRole()}
+            </div>
+            <div class="p-6">
+              <h5 class="text-black text-xl font-medium mb-2">${manager.getName()}</h5>
+              <p class="text-black text-base mb-4">
+                ${manager.getID()}
+              </p>
+              <p class="text-black text-base mb-4">
+                ${manager.getEmail()}
+              </p>
+              <p class="text-black text-base mb-4">
+                ${manager.getOfficeNumber()}
+              </p>
+              <!-- <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button> -->
+            </div>
+            <div class="py-3 px-6 border-t border-gray-300 text-black">
+                ${manager.getRole()}
+            </div>
+            </div>
+            `
+      }
+
+      // create card string
       // loop through input employees using class role function
-      for (var i = 0; i < data.length; i++) {
-            const employee = data[i];
+      for (var i = 0; i < team.length; i++) {
+            const employee = team[i];
             const role = employee.getRole()
 
             if (role === 'Engineer'){
@@ -101,15 +98,13 @@ function generateHTML(data) {
       }
 
       // join cards array into one string
-      const cardString = cardArray.join('');
-      // create string with entire html
-      const completeHTML = generatePortfolio(cardString);
-      return completeHTML;
+      return cardArray.join("")
+
 }
 
-// FIXME: initial questions
-// add card string to rest of html
-const generatePortfolio = function(cardString) {
+// insert cards into html
+// export entire string to write file
+module.exports = team => {
       return `<!DOCTYPE html>
       <html lang="en">
       <head>
@@ -121,24 +116,17 @@ const generatePortfolio = function(cardString) {
             href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
             />
             <script src="https://cdn.tailwindcss.com"></script>
-            <title>${data.team} Profile Page</title>
+            <title>Team Profile Page</title>
       </head>
       
-      <body class="bg-${data.bgColor}">
-            <header class="text-center text-${data.textColor} bg-${data.headerColor} py-5">
-                  <span class="text-5xl font-bold mt-0 mb-6">${data.team} Profile Page</span>
+      <body class="bg-white">
+            <header class="text-center text-black bg-grey-300 py-5">
+                  <span class="text-5xl font-bold mt-0 mb-6">Team Profile Page</span>
             </header>
       
             <div class="flex flex-wrap justify-center">
-            ${cardString}
+            ${generateCards(team)}
             </div>   
             </body>
-            </html>
-      `
+            </html>`
 }
-
-const stringHTML = JSON.stringify(generatePortfolio);
-
-module.export = generateHTML
-module.export = generatePortfolio
-module.export = stringHTML;

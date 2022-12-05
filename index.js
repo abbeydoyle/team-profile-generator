@@ -1,12 +1,15 @@
-// requirements
+// npm requirements
 const fs = require("fs");
-// const dist = require("dist");
 const inquirer = require("inquirer");
-const generateHTML = require("./src/generateHTML");
+// repo requirements
+// const dist = require("./dist");
 const Employee = require("./lib/Employee")
 const Engineer = require("./lib/Engineer")
 const Intern = require("./lib/Intern")
 const Manager = require("./lib/Manager");
+const generatePortfolio = require("./src/generateHTML");
+const generateHTML = require("./src/generateHTML");
+const stringHTML = require("./src/generateHTML");
 
 /*
 TODO: inquirer cats
@@ -24,7 +27,7 @@ page background color - bgColor
 
 
 */
-
+// inquirer prompt answers for each employee into an array
 const teamArray = [];
 
 // inquirer prompts
@@ -75,6 +78,7 @@ const intialQuestions = () => {
       .then(addEmployee())
 }
 
+// opening prompt to add an employee based on type or to end process with html build
 const addEmployee = () => {
       inquirer.prompt ([
             {
@@ -85,7 +89,7 @@ const addEmployee = () => {
             }
       ])
       .then(function(userInput) {
-            switch(userInput.addMember) {
+            switch(userInput.role) {
                   case "Manager": addManager();
                   break;
                   case "Engineer": addEngineer();
@@ -99,6 +103,7 @@ const addEmployee = () => {
       console.log(teamArray)
 }
 
+// add engineer case
 const addEngineer = () => {
       inquirer.prompt ([
             {
@@ -136,6 +141,7 @@ const addEngineer = () => {
                   name: 'email',
                   message: "Please enter this engineer's email address.",
                   validate: email => {
+                        // regular expression used to validate email addresses
                         emailRegex = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(email)
                         if (emailRegex) {
                               return true;
@@ -162,6 +168,8 @@ const addEngineer = () => {
       
             },
       ])
+      // create new engineer based on answers and push to team array
+      // return to add employee prompt
       .then(answers => {
             let engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
             teamArray.push(engineer);
@@ -169,6 +177,7 @@ const addEngineer = () => {
       })
 }
 
+// add engineer case
 const addIntern = () => {
       inquirer.prompt ([
             {
@@ -206,6 +215,7 @@ const addIntern = () => {
                   name: 'email',
                   message: "Please enter this intern's email address.",
                   validate: email => {
+                        // regular expression used to validate email addresses
                         emailRegex = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(email)
                         if (emailRegex) {
                               return true;
@@ -232,6 +242,8 @@ const addIntern = () => {
       
             },
       ])
+      // create new engineer based on answers and push to team array
+      // return to add employee prompt
       .then(answers => {
             let intern = new Intern(answers.name, answers.id, answers.email, answers.school);
             teamArray.push(intern);
@@ -239,6 +251,7 @@ const addIntern = () => {
       })
 }
 
+// add manager case
 const addManager = () => {
       inquirer.prompt ([
             {
@@ -276,6 +289,7 @@ const addManager = () => {
                   name: 'email',
                   message: "Please enter the manager's email address.",
                   validate: email => {
+                        // regular expression used to validate email addresses
                         emailRegex = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(email)
                         if (emailRegex) {
                               return true;
@@ -302,6 +316,8 @@ const addManager = () => {
       
             },  
       ])
+      // create new engineer based on answers and push to team array
+      // return to add employee prompt
       .then(answers => {
             let manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
             teamArray.push(manager);
@@ -311,23 +327,50 @@ const addManager = () => {
 
 
 function writeHTML() {
-      fs.writeFile('index.html', generateHTML,  (err) => {
-            err ? console.error(err) : console.log('File successfully written in a file entitled index.html');
-            })
+      console.log(generateHTML);
+      console.log(generatePortfolio);
+      console.log(stringHTML);
+      fs.writeFile('index.html', stringHTML, (err) => {
+            err ? console.log(err) : console.log('File written successfuly in index.html')
+       })
 }
+
+addEmployee()
+
+
+
+
+
+// function writeHTML() {
+//       fs.writeFile('index.html', generateCards,  (err) => {
+//             err ? console.error(err) : console.log('File successfully written in a file entitled index.html');
+//             })
+// }
 
 
 // FIXME: last hw temporarily
 // potential write file function
-// const writeToFile = data => {
+// function writeFile() {
+//       console.log(generateHTML);
 //       // return new Promise((resolve, reject) => {
-//       fs.writeFile('index.html', data, (err) => {
+//       fs.writeFile('index.html', generateHTML, (err) => {
 //             err ? console.error(err) : console.log('File successfully written in a file entitled index.html');
 //             })
 //       // })
 // }
 
-addEmployee()
+// addEmployee()
+// .then(teamArray => {
+//       return generateHTML(teamArray);
+//     })
+// .then(pageHTML => {
+//       return writeFile(pageHTML);
+// })
+//     .catch(err => {
+//    console.log(err);
+// });
+
+
 // .then(teamArray => {
 //       return generateHTML(teamArray);
 //     })
@@ -341,15 +384,17 @@ addEmployee()
 //   Exit the inquirer prompt
 // FIXME: works but gives error
 function exit() {
-      console.log(teamArray)
-      console.log('Thank you for visiting. Please come again!')
+      console.log(teamArray);
+      console.log(generateHTML);
+      console.log(stringHTML);
+      console.log('Thank you for visiting. Please come again!');
       addEmployee.ui.close();
       addEngineer.ui.close();
       addIntern.ui.close();
       addManager.ui.close();
     }
     
-    // close inquirer input if user press "escape" key
+// close inquirer input if user press "escape" key
 process.stdin.on('keypress', (_, key) => {
       if (key.name === "escape") {
             exit();

@@ -6,6 +6,8 @@
 - input for color schemes?
 https://tailwind-elements.com/docs/standard/components/cards/
 https://uibakery.io/regex-library/email
+https://regexr.com/3e48o
+
 
 ////////////////////////////////////////////////////////////////////////////////
 challenge getting started info

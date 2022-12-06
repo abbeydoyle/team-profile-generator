@@ -351,3 +351,60 @@ module.exports = stringHTML;
 
 //exports.generatePortfolio = generatePortfolio;
 //exports.generateHTML = generateHTML;
+
+
+
+//////////////////////
+// intialQuestions();
+
+// FIXME: how to call this 
+// const intialQuestions = () => {
+//   inquirer.prompt ([
+
+//         {
+//               type: 'list',
+//               name: 'bgColor',
+//               message: "Hi, welcome to the Team Portfolio Generator created by Abigail Doyle. Throughout this, you will add your employees along with their information, which will be used to generate an html export containing your team portfolio. If information should be placed on different lines, separate them using fwdslash+n. If at any point you would like to discontinue the process, simply press the 'escape' key. Please choose a background color",
+//               choices: ['Black', 'White']
+//         },
+
+//         {
+//               type: 'list',
+//               name: 'headerColor',
+//               message: "Please choose a header color.",
+//               choices: ['Black', 'White']
+//         },
+
+//         {
+//               type: 'list',
+//               name: 'textColor',
+//               message: "Please choose a text color.",
+//               choices: ['Black', 'White']
+//         },
+  
+  
+//         {
+//               type: 'input',
+//               name: 'teamName',
+//               message: "Please enter your team's name.",
+//               validate: teamInput => {
+//                     if (teamInput) {
+//                           return true;
+//                     } else {
+//                           console.log("Please enter your team's name");
+//                           return false;
+//                     }
+//               }
+  
+//         },
+//   ])
+//   .then(answers => {
+//         let theme = new Theme(answers.bgColor, answers.headerColor, answers.textColor, answers.teamName);
+//         colorTheme.push(theme);
+//         // let bgColor = answers.bgColor;
+//         // let headerColor = answers.headerColor;
+//         // let textColor = answers.textColor;
+//         // let teamName = answers.teamName;
+//         addEmployee();
+//   })
+// }

@@ -1,31 +1,31 @@
-const generateCards = (team, theme) => {
+
+const generateCards = team => {
       // empty array to pass cards into
       var cardArray = []
 
       // generate engineer html card using class functions and inquirer prompt
       const generateEngineer = engineer => {
-            return `<div class="block rounded-lg shadow-lg bg-white max-w-sm text-center w-full sm:w-1/2 md:w-1/2 xl:w-1/4 mx-5 my-5">
-            <div class="py-3 px-6 border-b border-gray-300 text-black">
+            return `<div class="block rounded-lg shadow-lg bg-[#5e6357] max-w-sm text-center w-full sm:w-1/2 md:w-1/2 xl:w-1/4 mx-5 my-5 drop-shadow-[15px_15px_15px_rgba(44,46,40,0.75)]">
+            <div class="py-3 px-6 border-b border-[#2c2e28] text-[#C4CEB4]">
             ${engineer.getRole()}
             </div>
             <div class="p-6">
-              <h5 class="text-black text-xl font-medium mb-2">${engineer.getName()}</h5>
-              <p class="text-black text-base mb-4">
+              <h5 class="text-[#C4CEB4] text-xl font-medium mb-2">${engineer.getName()}</h5>
+              <p class="text-[#C4CEB4] text-base mb-4">
                 ${engineer.getID()}
               </p>
-              <p class="text-black text-base mb-4">
+              <p class="text-[#C4CEB4] text-base mb-4">
                 <a href="mailto:${engineer.getEmail()}">
                   ${engineer.getEmail()}
                 </a> 
               </p>
-              <p class="text-${theme.textColor} text-base mb-4">
+              <p class="text-[#C4CEB4] text-base mb-4">
               <a href="https://github.com/${engineer.getGithub()}">
                   ${engineer.getGithub()}
               </a> 
               </p>
-              <!-- <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button> -->
             </div>
-            <div class="py-3 px-6 border-t border-gray-300 text-black">
+            <div class="py-3 px-6 border-t border-[#2c2e28] text-[#C4CEB4]">
                 ${engineer.getRole()}
             </div>
             </div>`
@@ -33,53 +33,51 @@ const generateCards = (team, theme) => {
 
       // generate intern html card using class functions and inquirer prompt
       const generateIntern = intern => {
-            return `<div class="block rounded-lg shadow-lg bg-white max-w-sm text-center w-full sm:w-1/2 md:w-1/2 xl:w-1/4 mx-5 my-5">
-            <div class="py-3 px-6 border-b border-gray-300 text-black">
+            return `<div class="block rounded-lg shadow-lg bg-[#5e6357] max-w-sm text-center w-full sm:w-1/2 md:w-1/2 xl:w-1/4 mx-5 my-5 drop-shadow-[15px_15px_15px_rgba(44,46,40,0.75)]">
+            <div class="py-3 px-6 border-b border-[#2c2e28] text-[#C4CEB4]">
             ${intern.getRole()}
             </div>
             <div class="p-6">
-              <h5 class="text-black text-xl font-medium mb-2">${intern.getName()}</h5>
-              <p class="text-black text-base mb-4">
+              <h5 class="text-[#C4CEB4] text-xl font-medium mb-2">${intern.getName()}</h5>
+              <p class="text-[#C4CEB4] text-base mb-4">
                 ${intern.getID()}
               </p>
-              <p class="text-black text-base mb-4">
+              <p class="text-[#C4CEB4] text-base mb-4">
                 <a href="mailto:${intern.getEmail()}">
                   ${intern.getEmail()}
                 </a> 
               </p>
-              <p class="text-black text-base mb-4">
+              <p class="text-[#C4CEB4] text-base mb-4">
                 ${intern.getSchool()}
               </p>
-              <!-- <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button> -->
             </div>
-            <div class="py-3 px-6 border-t border-gray-300 text-black">
+            <div class="py-3 px-6 border-t border-[#2c2e28] text-[#C4CEB4]">
                 ${intern.getRole()}
             </div>
             </div>`
       }
 
       // generate manager html card using class functions and inquirer prompt
-      const generateManager = (manager, theme) => {
-            return `<div class="block rounded-lg shadow-lg bg-white max-w-sm text-center w-full sm:w-1/2 md:w-1/2 xl:w-1/4 mx-5 my-5">
-            <div class="py-3 px-6 border-b border-gray-300 text-black">
+      const generateManager = manager => {
+            return `<div class="block rounded-lg shadow-lg bg-[#5e6357] max-w-sm text-center w-full sm:w-1/2 md:w-1/2 xl:w-1/4 mx-5 my-5 drop-shadow-[15px_15px_15px_rgba(44,46,40,0.75)]">
+            <div class="py-3 px-6 border-b border-[#2c2e28] text-[#C4CEB4]">
             ${manager.getRole()}
             </div>
             <div class="p-6">
-              <h5 class="text-black text-xl font-medium mb-2">${manager.getName()}</h5>
-              <p class="text-black text-base mb-4">
+              <h5 class="text-[#C4CEB4] text-xl font-medium mb-2">${manager.getName()}</h5>
+              <p class="text-[#C4CEB4] text-base mb-4">
                 ${manager.getID()}
               </p>
-              <p class="text-black text-base mb-4">
+              <p class="text-[#C4CEB4] text-base mb-4">
                 <a href="mailto:${manager.getEmail()}">
                   ${manager.getEmail()}
                 </a> 
               </p>
-              <p class="text-black text-base mb-4">
+              <p class= "text-[#C4CEB4] text-base mb-4">
                 ${manager.getOfficeNumber()}
               </p>
-              <!-- <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button> -->
             </div>
-          <div class="py-3 px-6 border-t border-gray-300 text-black">
+          <div class="py-3 px-6 border-t border-[#2c2e28] text-[#C4CEB4]">
               ${manager.getRole()}
           </div>
           </div>`
@@ -88,6 +86,7 @@ const generateCards = (team, theme) => {
       // create card string
       // loop through input employees using class role function
       for (var i = 0; i < team.length; i++) {
+
             const employee = team[i];
             const role = employee.getRole()
 
@@ -106,11 +105,12 @@ const generateCards = (team, theme) => {
       // join cards array into one string
       return cardArray.join("")
 
+
 }
 
 // insert cards into html
 // export entire string to write file
-module.exports = (team, theme) => {
+module.exports = team => {
       return `<!DOCTYPE html>
       <html lang="en">
       <head>
@@ -122,12 +122,12 @@ module.exports = (team, theme) => {
             href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
             />
             <script src="https://cdn.tailwindcss.com"></script>
-            <title>${theme.teamName} Profile Page</title>
+            <title>Team Portfolio</title>
       </head>
       
-      <body class="bg-${theme.bgColor}">
-            <header class="text-center text-${theme.textColor} bg-${theme.headerColor} py-5">
-                  <span class="text-5xl font-bold mt-0 mb-6">${theme.teamName} Profile Page</span>
+      <body class="bg-[#C4CEB4]">
+            <header class="m-10 rounded-lg text-center text-[#2c2e28] bg-[#5e6357] py-5 drop-shadow-[15px_15px_15px_rgba(44,46,40,0.75)]">
+                  <span class="text-5xl font-bold mt-0 mb-6">Team Portfolio</span>
             </header>
       
             <div class="flex flex-wrap justify-center">

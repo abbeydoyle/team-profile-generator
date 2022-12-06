@@ -2,91 +2,15 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 // repo requirements
-// const dist = require("./dist");
 const Employee = require("./lib/Employee")
 const Engineer = require("./lib/Engineer")
 const Intern = require("./lib/Intern")
 const Manager = require("./lib/Manager");
-const Theme = require("./lib/theme");
 const generateCards = require("./src/generateHTML")
 
-/*
-TODO: inquirer cats
-team name - team
-employee role - role
-employee name - name
-employee id - id
-employee email - email
-manager office - officeNumber
-engineer github - github
-intern school - school
-header background color - headerColor
-text color - textColor
-page background color - bgColor
 
-
-*/
 // inquirer prompt answers for each employee into an array
 const teamArray = [];
-const colorTheme = [];
-let bgColor
-let headerColor
-let textColor
-let teamName
-
-// inquirer prompts
-
-// FIXME: how to call this 
-const intialQuestions = () => {
-      inquirer.prompt ([
-
-            {
-                  type: 'list',
-                  name: 'bgColor',
-                  message: "Hi, welcome to the Team Portfolio Generator created by Abigail Doyle. Throughout this, you will add your employees along with their information, which will be used to generate an html export containing your team portfolio. If information should be placed on different lines, separate them using fwdslash+n. If at any point you would like to discontinue the process, simply press the 'escape' key. Please choose a background color",
-                  choices: ['Black', 'White']
-            },
-
-            {
-                  type: 'list',
-                  name: 'headerColor',
-                  message: "Please choose a header color.",
-                  choices: ['Black', 'White']
-            },
-
-            {
-                  type: 'list',
-                  name: 'textColor',
-                  message: "Please choose a text color.",
-                  choices: ['Black', 'White']
-            },
-      
-      
-            {
-                  type: 'input',
-                  name: 'teamName',
-                  message: "Please enter your team's name.",
-                  validate: teamInput => {
-                        if (teamInput) {
-                              return true;
-                        } else {
-                              console.log("Please enter your team's name");
-                              return false;
-                        }
-                  }
-      
-            },
-      ])
-      .then(answers => {
-            let theme = new Theme(answers.bgColor, answers.headerColor, answers.textColor, answers.teamName);
-            colorTheme.push(theme);
-            let bgColor = answers.bgColor;
-            let headerColor = answers.headerColor;
-            let textColor = answers.textColor;
-            let teamName = answers.teamName;
-            addEmployee();
-      })
-}
 
 // opening prompt to add an employee based on type or to end process with html build
 const addEmployee = () => {
@@ -94,7 +18,7 @@ const addEmployee = () => {
             {
                   type: 'list',
                   name: 'role',
-                  message: "Which type of employee would you like to add?",
+                  message: "Hi, welcome to the Team Portfolio Generator created by Abigail Doyle. Throughout this, you will add your employees along with their information, which will be used to generate an html export containing your team portfolio. If information should be placed on different lines, separate them using fwdslash+n. If at any point you would like to discontinue the process, simply press the 'escape' key. Which type of employee would you like to add?",
                   choices: ['Manager', 'Engineer', 'Intern', 'None at this time']
             }
       ])
@@ -336,23 +260,18 @@ const addManager = () => {
 
 
 function writeHTML() {
-      // console.log(generateCards(teamArray, colorTheme));
-      fs.writeFile('index.html', generateCards(teamArray, colorTheme), (err) => {
-            err ? console.log(err) : console.log('File written successfuly in index.html')
+      console.log(generateCards(teamArray));
+      console.log(teamArray);
+      fs.writeFile('./dist/index.html', generateCards(teamArray), (err) => {
+            err ? console.log(err) : console.log('index.html file written successfuly in dist/ folder')
        })
 }
 
-// addEmployee()
-intialQuestions();
+addEmployee()
 
 //   Exit the inquirer prompt
-// FIXME: works but gives error
 function exit() {
       console.log('Thank you for visiting. Please come again!');
-      // addEmployee.close();
-      // addEngineer.close();
-      // addIntern.close();
-      // addManager.close();
       process.exit();
     }
     

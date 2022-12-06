@@ -6,7 +6,7 @@ describe("Create new employee", () => {
 
             expect(typeof employee.name).toBe("string")
             expect(typeof employee.id).toBe("string")
-            expect(typeof employee.id).toBe("string")
+            expect(typeof employee.email).toBe("string")
 
       })
 })

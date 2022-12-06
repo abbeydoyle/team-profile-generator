@@ -7,9 +7,6 @@ const Employee = require("./lib/Employee")
 const Engineer = require("./lib/Engineer")
 const Intern = require("./lib/Intern")
 const Manager = require("./lib/Manager");
-const generatePortfolio = require("./src/generateHTML");
-const generateHTML = require("./src/generateHTML");
-const stringHTML = require("./src/generateHTML");
 const generateCards = require("./src/generateHTML")
 
 /*
@@ -328,9 +325,6 @@ const addManager = () => {
 
 
 function writeHTML() {
-      console.log(module.generateHTML);
-      console.log(module.generatePortfolio);
-      console.log(module.stringHTML);
       console.log(generateCards(teamArray));
       fs.writeFile('index.html', generateCards(teamArray), (err) => {
             err ? console.log(err) : console.log('File written successfuly in index.html')
@@ -339,61 +333,14 @@ function writeHTML() {
 
 addEmployee()
 
-
-
-
-
-// function writeHTML() {
-//       fs.writeFile('index.html', generateCards,  (err) => {
-//             err ? console.error(err) : console.log('File successfully written in a file entitled index.html');
-//             })
-// }
-
-
-// FIXME: last hw temporarily
-// potential write file function
-// function writeFile() {
-//       console.log(generateHTML);
-//       // return new Promise((resolve, reject) => {
-//       fs.writeFile('index.html', generateHTML, (err) => {
-//             err ? console.error(err) : console.log('File successfully written in a file entitled index.html');
-//             })
-//       // })
-// }
-
-// addEmployee()
-// .then(teamArray => {
-//       return generateHTML(teamArray);
-//     })
-// .then(pageHTML => {
-//       return writeFile(pageHTML);
-// })
-//     .catch(err => {
-//    console.log(err);
-// });
-
-
-// .then(teamArray => {
-//       return generateHTML(teamArray);
-//     })
-//     .then(pageHTML => {
-//       return writeToFile(pageHTML);
-//     })
-//     .catch(err => {
-//    console.log(err);
-// })
-
 //   Exit the inquirer prompt
 // FIXME: works but gives error
 function exit() {
-      console.log(teamArray);
-      console.log(generateHTML);
-      console.log(stringHTML);
       console.log('Thank you for visiting. Please come again!');
-      addEmployee.ui.close();
-      addEngineer.ui.close();
-      addIntern.ui.close();
-      addManager.ui.close();
+      addEmployee.close();
+      addEngineer.close();
+      addIntern.close();
+      addManager.close();
     }
     
 // close inquirer input if user press "escape" key

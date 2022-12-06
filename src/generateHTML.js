@@ -14,10 +14,14 @@ const generateCards = team => {
                 ${engineer.getID()}
               </p>
               <p class="text-black text-base mb-4">
-                ${engineer.getEmail()}
+                <a href="mailto:${engineer.getEmail()}">
+                  ${engineer.getEmail()}
+                </a> 
               </p>
               <p class="text-black text-base mb-4">
-                ${engineer.getGithub()}
+              <a href="https://github.com/${engineer.getGithub()}">
+                  ${engineer.getGithub()}
+              </a> 
               </p>
               <!-- <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button> -->
             </div>
@@ -39,7 +43,9 @@ const generateCards = team => {
                 ${intern.getID()}
               </p>
               <p class="text-black text-base mb-4">
-                ${intern.getEmail()}
+                <a href="mailto:${intern.getEmail()}">
+                  ${intern.getEmail()}
+                </a> 
               </p>
               <p class="text-black text-base mb-4">
                 ${intern.getSchool()}
@@ -49,8 +55,7 @@ const generateCards = team => {
             <div class="py-3 px-6 border-t border-gray-300 text-black">
                 ${intern.getRole()}
             </div>
-            </div>
-            `
+            </div>`
       }
 
       // generate manager html card using class functions and inquirer prompt
@@ -65,18 +70,19 @@ const generateCards = team => {
                 ${manager.getID()}
               </p>
               <p class="text-black text-base mb-4">
-                ${manager.getEmail()}
+                <a href="mailto:${manager.getEmail()}">
+                  ${manager.getEmail()}
+                </a> 
               </p>
               <p class="text-black text-base mb-4">
                 ${manager.getOfficeNumber()}
               </p>
               <!-- <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button> -->
             </div>
-            <div class="py-3 px-6 border-t border-gray-300 text-black">
-                ${manager.getRole()}
-            </div>
-            </div>
-            `
+          <div class="py-3 px-6 border-t border-gray-300 text-black">
+              ${manager.getRole()}
+          </div>
+          </div>`
       }
 
       // create card string

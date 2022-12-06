@@ -1,4 +1,4 @@
-const generateCards = team => {
+const generateCards = (team, theme) => {
       // empty array to pass cards into
       var cardArray = []
 
@@ -18,7 +18,7 @@ const generateCards = team => {
                   ${engineer.getEmail()}
                 </a> 
               </p>
-              <p class="text-black text-base mb-4">
+              <p class="text-${theme.textColor} text-base mb-4">
               <a href="https://github.com/${engineer.getGithub()}">
                   ${engineer.getGithub()}
               </a> 
@@ -59,7 +59,7 @@ const generateCards = team => {
       }
 
       // generate manager html card using class functions and inquirer prompt
-      const generateManager = manager => {
+      const generateManager = (manager, theme) => {
             return `<div class="block rounded-lg shadow-lg bg-white max-w-sm text-center w-full sm:w-1/2 md:w-1/2 xl:w-1/4 mx-5 my-5">
             <div class="py-3 px-6 border-b border-gray-300 text-black">
             ${manager.getRole()}
@@ -110,7 +110,7 @@ const generateCards = team => {
 
 // insert cards into html
 // export entire string to write file
-module.exports = team => {
+module.exports = (team, theme) => {
       return `<!DOCTYPE html>
       <html lang="en">
       <head>
@@ -122,12 +122,12 @@ module.exports = team => {
             href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
             />
             <script src="https://cdn.tailwindcss.com"></script>
-            <title>Team Profile Page</title>
+            <title>${theme.teamName} Profile Page</title>
       </head>
       
-      <body class="bg-white">
-            <header class="text-center text-black bg-grey-300 py-5">
-                  <span class="text-5xl font-bold mt-0 mb-6">Team Profile Page</span>
+      <body class="bg-${theme.bgColor}">
+            <header class="text-center text-${theme.textColor} bg-${theme.headerColor} py-5">
+                  <span class="text-5xl font-bold mt-0 mb-6">${theme.teamName} Profile Page</span>
             </header>
       
             <div class="flex flex-wrap justify-center">

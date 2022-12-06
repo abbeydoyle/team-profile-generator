@@ -7,6 +7,7 @@ const Employee = require("./lib/Employee")
 const Engineer = require("./lib/Engineer")
 const Intern = require("./lib/Intern")
 const Manager = require("./lib/Manager");
+const Theme = require("./lib/theme");
 const generateCards = require("./src/generateHTML")
 
 /*
@@ -27,40 +28,43 @@ page background color - bgColor
 */
 // inquirer prompt answers for each employee into an array
 const teamArray = [];
+const colorTheme = [];
+let bgColor
+let headerColor
+let textColor
+let teamName
 
 // inquirer prompts
 
 // FIXME: how to call this 
 const intialQuestions = () => {
       inquirer.prompt ([
+
             {
                   type: 'list',
                   name: 'bgColor',
-                  message: "Hi, welcome to the Team Portfolio Generator created by Abigail Doyle. Throughout this, you will add your employees along with their information, which will be used to generate an html export containing your team portfolio. If information should be placed on different lines, separate them using '\n' in place of pressing the 'enter' key. If at any point you would like to discontinue the process, simply press the 'escape' key. What would you like the background color of the page to be?",
-                  chocies: ["black", "white"]
-      
+                  message: "Hi, welcome to the Team Portfolio Generator created by Abigail Doyle. Throughout this, you will add your employees along with their information, which will be used to generate an html export containing your team portfolio. If information should be placed on different lines, separate them using fwdslash+n. If at any point you would like to discontinue the process, simply press the 'escape' key. Please choose a background color",
+                  choices: ['Black', 'White']
             },
-      
+
             {
                   type: 'list',
                   name: 'headerColor',
-                  message: "What would you like the header color of the page to be?",
-                  chocies: ["black", "white"]
-      
+                  message: "Please choose a header color.",
+                  choices: ['Black', 'White']
             },
-      
+
             {
                   type: 'list',
                   name: 'textColor',
-                  message: "What would you like the text color of the page to be?",
-                  chocies: ["black", "white"]
-      
+                  message: "Please choose a text color.",
+                  choices: ['Black', 'White']
             },
       
       
             {
                   type: 'input',
-                  name: 'team',
+                  name: 'teamName',
                   message: "Please enter your team's name.",
                   validate: teamInput => {
                         if (teamInput) {
@@ -73,7 +77,15 @@ const intialQuestions = () => {
       
             },
       ])
-      .then(addEmployee())
+      .then(answers => {
+            let theme = new Theme(answers.bgColor, answers.headerColor, answers.textColor, answers.teamName);
+            colorTheme.push(theme);
+            let bgColor = answers.bgColor;
+            let headerColor = answers.headerColor;
+            let textColor = answers.textColor;
+            let teamName = answers.teamName;
+            addEmployee();
+      })
 }
 
 // opening prompt to add an employee based on type or to end process with html build
@@ -98,7 +110,6 @@ const addEmployee = () => {
                   break;
             }
       })
-      console.log(teamArray)
 }
 
 // add engineer case
@@ -325,22 +336,24 @@ const addManager = () => {
 
 
 function writeHTML() {
-      console.log(generateCards(teamArray));
-      fs.writeFile('index.html', generateCards(teamArray), (err) => {
+      // console.log(generateCards(teamArray, colorTheme));
+      fs.writeFile('index.html', generateCards(teamArray, colorTheme), (err) => {
             err ? console.log(err) : console.log('File written successfuly in index.html')
        })
 }
 
-addEmployee()
+// addEmployee()
+intialQuestions();
 
 //   Exit the inquirer prompt
 // FIXME: works but gives error
 function exit() {
       console.log('Thank you for visiting. Please come again!');
-      addEmployee.close();
-      addEngineer.close();
-      addIntern.close();
-      addManager.close();
+      // addEmployee.close();
+      // addEngineer.close();
+      // addIntern.close();
+      // addManager.close();
+      process.exit();
     }
     
 // close inquirer input if user press "escape" key

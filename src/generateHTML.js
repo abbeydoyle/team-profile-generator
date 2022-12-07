@@ -20,7 +20,7 @@ const generateCards = team => {
                 </a> 
               </p>
               <p class="text-[#C4CEB4] text-base mb-4">
-              <a href="https://github.com/${engineer.getGithub()}">
+              <a href="https://github.com/${engineer.getGithub()}" target="_blank">
                   ${engineer.getGithub()}
               </a> 
               </p>

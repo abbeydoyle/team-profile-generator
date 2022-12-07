@@ -111,7 +111,7 @@ const generateCards = (team, theme) => {
 
 // insert cards into html
 // export entire string to write file
-module.exports = team => {
+module.exports = (team, theme) => {
       return `<!DOCTYPE html>
       <html lang="en">
       <head>
@@ -132,7 +132,7 @@ module.exports = team => {
             </header>
       
             <div class="flex flex-wrap justify-center">
-            ${generateCards(team)}
+            ${generateCards(team, theme)}
             </div>   
             </body>
             </html>`

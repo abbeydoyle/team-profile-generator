@@ -2,57 +2,55 @@
 const generateCards = (team, theme) => {
       // empty array to pass cards into
       var cardArray = []
-      console.log(theme)
-
       // generate engineer html card using class functions and inquirer prompt
-      const generateEngineer = engineer => {
-            return `<div class="block rounded-lg shadow-lg bg-[#5e6357] max-w-sm text-center w-full sm:w-1/2 md:w-1/2 xl:w-1/4 mx-5 my-5 drop-shadow-[15px_15px_15px_rgba(44,46,40,0.75)]">
-            <div class="py-3 px-6 border-b border-[#2c2e28] text-[#C4CEB4]">
+      const generateEngineer = (engineer, theme) => {
+            return `<div class="block rounded-lg shadow-lg bg-${theme.getBlockColor()} max-w-sm text-center w-full sm:w-1/2 md:w-1/2 xl:w-1/4 mx-5 my-5 drop-shadow-${theme.getShadowColor()}">
+            <div class="py-3 px-6 border-b border-${theme.getAccentColor()} text-${theme.getTextColor()}">
             ${engineer.getRole()}
             </div>
             <div class="p-6">
-              <h5 class="text-[#C4CEB4] text-xl font-medium mb-2">${engineer.getName()}</h5>
-              <p class="text-[#C4CEB4] text-base mb-4">
+              <h5 class="text-${theme.getTextColor()} text-xl font-medium mb-2">${engineer.getName()}</h5>
+              <p class="text-${theme.getTextColor()} text-base mb-4">
                 ${engineer.getID()}
               </p>
-              <p class="text-[#C4CEB4] text-base mb-4">
+              <p class="text-${theme.getTextColor()} text-base mb-4">
                 <a href="mailto:${engineer.getEmail()}">
                   ${engineer.getEmail()}
                 </a> 
               </p>
-              <p class="text-[#C4CEB4] text-base mb-4">
+              <p class="text-${theme.getTextColor()} text-base mb-4">
               <a href="https://github.com/${engineer.getGithub()}" target="_blank">
                   ${engineer.getGithub()}
               </a> 
               </p>
             </div>
-            <div class="py-3 px-6 border-t border-[#2c2e28] text-[#C4CEB4]">
+            <div class="py-3 px-6 border-t border-${theme.getAccentColor()} text-${theme.getTextColor()}">
                 ${engineer.getRole()}
             </div>
             </div>`
       }
 
       // generate intern html card using class functions and inquirer prompt
-      const generateIntern = intern => {
-            return `<div class="block rounded-lg shadow-lg bg-[#5e6357] max-w-sm text-center w-full sm:w-1/2 md:w-1/2 xl:w-1/4 mx-5 my-5 drop-shadow-[15px_15px_15px_rgba(44,46,40,0.75)]">
-            <div class="py-3 px-6 border-b border-[#2c2e28] text-[#C4CEB4]">
+      const generateIntern = (intern, theme) => {
+            return `<div class="block rounded-lg shadow-lg bg-${theme.getBlockColor()} max-w-sm text-center w-full sm:w-1/2 md:w-1/2 xl:w-1/4 mx-5 my-5 drop-shadow-${theme.getShadowColor()}">
+            <div class="py-3 px-6 border-b border-${theme.getAccentColor()} text-${theme.getTextColor()}">
             ${intern.getRole()}
             </div>
             <div class="p-6">
-              <h5 class="text-[#C4CEB4] text-xl font-medium mb-2">${intern.getName()}</h5>
-              <p class="text-[#C4CEB4] text-base mb-4">
+              <h5 class="text-${theme.getTextColor()} text-xl font-medium mb-2">${intern.getName()}</h5>
+              <p class="text-${theme.getTextColor()} text-base mb-4">
                 ${intern.getID()}
               </p>
-              <p class="text-[#C4CEB4] text-base mb-4">
+              <p class="text-${theme.getTextColor()} text-base mb-4">
                 <a href="mailto:${intern.getEmail()}">
                   ${intern.getEmail()}
                 </a> 
               </p>
-              <p class="text-[#C4CEB4] text-base mb-4">
+              <p class="text-${theme.getTextColor()} text-base mb-4">
                 ${intern.getSchool()}
               </p>
             </div>
-            <div class="py-3 px-6 border-t border-[#2c2e28] text-[#C4CEB4]">
+            <div class="py-3 px-6 border-t border-${theme.getAccentColor()} text-${theme.getTextColor()}">
                 ${intern.getRole()}
             </div>
             </div>`
@@ -60,25 +58,25 @@ const generateCards = (team, theme) => {
 
       // generate manager html card using class functions and inquirer prompt
       const generateManager = (manager, theme) => {
-            return `<div class="block rounded-lg shadow-lg bg-[#5e6357] max-w-sm text-center w-full sm:w-1/2 md:w-1/2 xl:w-1/4 mx-5 my-5 drop-shadow-[15px_15px_15px_rgba(44,46,40,0.75)]">
-            <div class="py-3 px-6 border-b border-[#2c2e28] text-${theme.getTextColor()}">
+            return `<div class="block rounded-lg shadow-lg bg-${theme.getBlockColor()} max-w-sm text-center w-full sm:w-1/2 md:w-1/2 xl:w-1/4 mx-5 my-5 drop-shadow-${theme.getShadowColor()}">
+            <div class="py-3 px-6 border-b border-${theme.getAccentColor()} text-${theme.getTextColor()}">
             ${manager.getRole()}
             </div>
             <div class="p-6">
-              <h5 class="text-[#C4CEB4] text-xl font-medium mb-2">${manager.getName()}</h5>
-              <p class="text-[#C4CEB4] text-base mb-4">
+              <h5 class="text-${theme.getTextColor()} text-xl font-medium mb-2">${manager.getName()}</h5>
+              <p class="text-${theme.getTextColor()} text-base mb-4">
                 ${manager.getID()}
               </p>
-              <p class="text-[#C4CEB4] text-base mb-4">
+              <p class="text-${theme.getTextColor()} text-base mb-4">
                 <a href="mailto:${manager.getEmail()}">
                   ${manager.getEmail()}
                 </a> 
               </p>
-              <p class= "text-[#C4CEB4] text-base mb-4">
+              <p class= "text-${theme.getTextColor()} text-base mb-4">
                 ${manager.getOfficeNumber()}
               </p>
             </div>
-          <div class="py-3 px-6 border-t border-[#2c2e28] text-[#C4CEB4]">
+          <div class="py-3 px-6 border-t border-${theme.getAccentColor()} text-${theme.getTextColor()}">
               ${manager.getRole()}
           </div>
           </div>`
@@ -92,13 +90,13 @@ const generateCards = (team, theme) => {
             const role = employee.getRole()
 
             if (role === 'Engineer'){
-                  var engineerCard = generateEngineer(employee);
+                  var engineerCard = generateEngineer(employee, theme);
                   cardArray.push(engineerCard)
             } else if (role === 'Intern'){
-                  var internCard = generateIntern(employee);
+                  var internCard = generateIntern(employee, theme);
                   cardArray.push(internCard)
             } else if (role === 'Manager') {
-                  var managerCard = generateManager(employee);
+                  var managerCard = generateManager(employee, theme);
                   cardArray.push(managerCard)
             }
       }
@@ -123,12 +121,12 @@ module.exports = (team, theme) => {
             href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
             />
             <script src="https://cdn.tailwindcss.com"></script>
-            <title>Team Portfolio</title>
+            <title>${theme.getTeamName()} Portfolio</title>
       </head>
       
-      <body class="bg-[#C4CEB4]">
-            <header class="m-10 rounded-lg text-center text-[#2c2e28] bg-[#5e6357] py-5 drop-shadow-[15px_15px_15px_rgba(44,46,40,0.75)]">
-                  <span class="text-5xl font-bold mt-0 mb-6">Team Portfolio</span>
+      <body class="bg-${theme.getBGColor()}">
+            <header class="m-10 rounded-lg text-center text-${theme.getAccentColor()} bg-${theme.getBlockColor()} py-5 drop-shadow-${theme.getShadowColor()}">
+                  <span class="text-5xl font-bold mt-0 mb-6">${theme.getTeamName()} Portfolio</span>
             </header>
       
             <div class="flex flex-wrap justify-center">

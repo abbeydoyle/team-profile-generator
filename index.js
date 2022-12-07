@@ -14,31 +14,15 @@ const Theme = require("./lib/theme")
 const teamArray = [];
 let colorTheme;
 
-// FIXME: how to call this 
 const intialQuestions = () => {
   inquirer.prompt ([
 
         {
               type: 'list',
-              name: 'bgColor',
-              message: "Hi, welcome to the Team Portfolio Generator created by Abigail Doyle. Throughout this, you will add your employees along with their information, which will be used to generate an html export containing your team portfolio. If information should be placed on different lines, separate them using fwdslash+n. If at any point you would like to discontinue the process, simply press the 'escape' key. Please choose a background color",
-              choices: ['Black', 'White']
+              name: 'colorScheme',
+              message: "Hi, welcome to the Team Portfolio Generator created by Abigail Doyle. Throughout this, you will add your employees along with their information, which will be used to generate an html export containing your team portfolio. If information should be placed on different lines, separate them using fwdslash+n. If at any point you would like to discontinue the process, simply press the 'escape' key. Please choose a color scheme",
+              choices: ['Earthy green', 'Muted blues', 'Rustic orange', 'Dusty pink', 'Black and White']
         },
-
-        {
-              type: 'list',
-              name: 'headerColor',
-              message: "Please choose a header color.",
-              choices: ['Black', 'White']
-        },
-
-        {
-              type: 'list',
-              name: 'textColor',
-              message: "Please choose a text color.",
-              choices: ['Black', 'White']
-        },
-  
   
         {
               type: 'input',
@@ -56,7 +40,7 @@ const intialQuestions = () => {
         },
   ])
   .then(answers => {
-        colorTheme = new Theme(answers.bgColor, answers.headerColor, answers.textColor, answers.teamName);
+        colorTheme = new Theme(answers.colorScheme, answers.teamName);
         addEmployee();
   })
 }
@@ -68,7 +52,7 @@ const addEmployee = () => {
             {
                   type: 'list',
                   name: 'role',
-                  message: "Hi, welcome to the Team Portfolio Generator created by Abigail Doyle. Throughout this, you will add your employees along with their information, which will be used to generate an html export containing your team portfolio. If information should be placed on different lines, separate them using fwdslash+n. If at any point you would like to discontinue the process, simply press the 'escape' key. Which type of employee would you like to add?",
+                  message: "Which type of employee would you like to add?",
                   choices: ['Manager', 'Engineer', 'Intern', 'None at this time']
             }
       ])
@@ -318,7 +302,7 @@ function writeHTML() {
        })
 }
 
-// addEmployee()
+
 intialQuestions()
 
 //   Exit the inquirer prompt

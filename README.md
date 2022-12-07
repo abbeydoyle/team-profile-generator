@@ -3,7 +3,7 @@ Node.js command-line application that generates an HTML webpage that displays su
 
 ## Description
 
-This project uses npm, inquirer, fs, jest, and javascript to generate a Team Portfolio Page with user input. All input is given within the terminal using Inquirer, a command line interface for Node.js. There are employee-specific prompts, allowing for more personilized employee cards. This webpage file is then written into the project repository with the Node File System module. Each class and subclass was tested using Jest script tests, ensuring the correct object types and function returns. This project introduced working in the command line with Node Package Manager (npm), using javascript to create functions, inquirer prompts, and a string that will populate the webpage.
+This project uses npm, inquirer, fs, jest, and javascript to generate a Team Portfolio Page with user input. All input is given within the terminal using Inquirer, a command line interface for Node.js. With user input, the portfolio page has custom color themes. There are employee-specific prompts, allowing for more personilized employee cards. This webpage file is then written into the project repository with the Node File System module. Each class and subclass was tested using Jest script tests, ensuring the correct object types and function returns. This project introduced working in the command line with Node Package Manager (npm), using javascript to create functions, inquirer prompts, and a string that will populate the webpage.
 
 
 <!-- Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
@@ -72,6 +72,12 @@ There are 10 main sections of this repository:
 Generated Webpage: [https://abbeydoyle.github.io/team-profile-generator/](https://abbeydoyle.github.io/team-profile-generator/)
 
 ![Screencastify demonstration](./dist/team-profile.gif)
+![Earthy green](./dist/earthy%20green.png)
+![Muted blues](./dist/muted%20blues.png)
+![Rustic orange](./dist/rustic%20orange.png)
+![Dusty pink](./dist/Dusty%20pink.png)
+![Neutral](./dist/black-white.png)
+
 
 
 
@@ -140,6 +146,7 @@ This page features:
 - Built in Tailwind CSS
 - Email links for all employees
 - Github portfolio links for engineers
+- Custom Color Themes
 
 
 
@@ -159,5 +166,5 @@ If you created an application or package and would like other developers to cont
 - Attempt to bypass a prompt and an error message will appear
 - Attempt to type in a non-email string in the email prompt and an error message will appear
 - Run the built in Jest tests with the command "npm test"
-
+- Try out a different color theme each time!
 <!-- Go the extra mile and write tests for your application. Then provide examples on how to run them here. -->

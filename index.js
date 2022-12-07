@@ -7,10 +7,60 @@ const Engineer = require("./lib/Engineer")
 const Intern = require("./lib/Intern")
 const Manager = require("./lib/Manager");
 const generateCards = require("./src/generateHTML")
+const Theme = require("./lib/theme")
 
 
 // inquirer prompt answers for each employee into an array
 const teamArray = [];
+let colorTheme;
+
+// FIXME: how to call this 
+const intialQuestions = () => {
+  inquirer.prompt ([
+
+        {
+              type: 'list',
+              name: 'bgColor',
+              message: "Hi, welcome to the Team Portfolio Generator created by Abigail Doyle. Throughout this, you will add your employees along with their information, which will be used to generate an html export containing your team portfolio. If information should be placed on different lines, separate them using fwdslash+n. If at any point you would like to discontinue the process, simply press the 'escape' key. Please choose a background color",
+              choices: ['Black', 'White']
+        },
+
+        {
+              type: 'list',
+              name: 'headerColor',
+              message: "Please choose a header color.",
+              choices: ['Black', 'White']
+        },
+
+        {
+              type: 'list',
+              name: 'textColor',
+              message: "Please choose a text color.",
+              choices: ['Black', 'White']
+        },
+  
+  
+        {
+              type: 'input',
+              name: 'teamName',
+              message: "Please enter your team's name.",
+              validate: teamInput => {
+                    if (teamInput) {
+                          return true;
+                    } else {
+                          console.log("Please enter your team's name");
+                          return false;
+                    }
+              }
+  
+        },
+  ])
+  .then(answers => {
+        colorTheme = new Theme(answers.bgColor, answers.headerColor, answers.textColor, answers.teamName);
+        addEmployee();
+  })
+}
+
 
 // opening prompt to add an employee based on type or to end process with html build
 const addEmployee = () => {
@@ -260,14 +310,16 @@ const addManager = () => {
 
 
 function writeHTML() {
-      console.log(generateCards(teamArray));
+      console.log(generateCards(teamArray, colorTheme));
       console.log(teamArray);
-      fs.writeFile('./dist/index.html', generateCards(teamArray), (err) => {
+      console.log(colorTheme);
+      fs.writeFile('./dist/index.html', generateCards(teamArray, colorTheme), (err) => {
             err ? console.log(err) : console.log('index.html file written successfuly in dist/ folder')
        })
 }
 
-addEmployee()
+// addEmployee()
+intialQuestions()
 
 //   Exit the inquirer prompt
 function exit() {

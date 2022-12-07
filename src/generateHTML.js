@@ -1,7 +1,8 @@
 
-const generateCards = team => {
+const generateCards = (team, theme) => {
       // empty array to pass cards into
       var cardArray = []
+      console.log(theme)
 
       // generate engineer html card using class functions and inquirer prompt
       const generateEngineer = engineer => {
@@ -58,9 +59,9 @@ const generateCards = team => {
       }
 
       // generate manager html card using class functions and inquirer prompt
-      const generateManager = manager => {
+      const generateManager = (manager, theme) => {
             return `<div class="block rounded-lg shadow-lg bg-[#5e6357] max-w-sm text-center w-full sm:w-1/2 md:w-1/2 xl:w-1/4 mx-5 my-5 drop-shadow-[15px_15px_15px_rgba(44,46,40,0.75)]">
-            <div class="py-3 px-6 border-b border-[#2c2e28] text-[#C4CEB4]">
+            <div class="py-3 px-6 border-b border-[#2c2e28] text-${theme.getTextColor()}">
             ${manager.getRole()}
             </div>
             <div class="p-6">
